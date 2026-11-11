@@ -11,10 +11,10 @@
   <xacro:arg name="arm_prefix" default=""/>
 
   <!-- Don't print a prefix for joints, visuals, and links? -->
-  <xacro:arg name="no_prefix" default="false"/>
+  <xacro:arg name="no_prefix" default="true"/>
 
   <!-- Should an end-effector be mounted at the flange?" -->
-  <xacro:arg name="hand" default="true"/>
+  <xacro:arg name="hand" default="false"/>
 
   <!-- Which end-effector would be mounted at the flange?" -->
   <xacro:arg name="ee_id" default="franka_hand"/>
@@ -41,7 +41,7 @@
   <xacro:arg name="with_sc" default="false"/>
 
   <!-- The frame the robot base is rigidly attached to -->
-  <xacro:arg name="connected_to" default="base"/>
+  <xacro:arg name="connected_to" default="world"/>
 
   <!-- Emit the coarse self-collision capsule geometry inside the *_sc sub-links? -->
   <xacro:arg name="include_self_collision_geometry" default="true"/>
@@ -55,13 +55,15 @@
 
   <!--Position
   offset with respect to the world-->
-  <xacro:arg name="xyz" default="0 0 0"/>
+  <xacro:arg name="xyz" default="0.041 0 0"/>
 
   <!--Rotation
   offset with respect to the world-->
   <xacro:arg name="rpy" default="0 0 0"/>
 
   <xacro:franka_robot robot_type="fer"
+    xyz="$(arg xyz)"
+    rpy="$(arg rpy)"
     include_self_collision_geometry="$(arg include_self_collision_geometry)"
     hand="$(arg hand)"
     ee_id="$(arg ee_id)"

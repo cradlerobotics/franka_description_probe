@@ -102,5 +102,46 @@
       />
     </xacro:if>
 
+
+
+   <!-- custom probe, probably should be changed -->
+    <link name="probe">
+
+      <visual>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0"/>
+
+        <geometry>
+          <mesh filename="package://franka_description/meshes/radition_probe/probe.stl"
+                scale="1 1 1"/>
+        </geometry>
+
+        <material name="probe_grey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+
+    </link>
+
+    <joint name="probe_joint"
+          type="fixed">
+
+      <parent link="${link_prefix}link8"/>
+      <child link="probe"/>
+
+      <origin
+          xyz="0 0 0"
+          rpy="0 0 0"/>
+      <!-- <origin xyz="-0.435 0.156 0.53" rpy="180 0 0"/> -->
+
+    </joint>
+    
+
+    
+
+
+    
+
   </xacro:macro>
 </robot>
